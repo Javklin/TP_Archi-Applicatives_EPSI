@@ -19,6 +19,8 @@ class TaskView {
       input.id = `input_${task.id}`;
       const saveButton = document.createElement("button");
       saveButton.id = `saveButton_${task.id}`;
+      saveButton.style.backgroundColor = "green";
+
       input.addEventListener("input", () => {
         const newText = input.value;
         const saveButton = document.getElementById(`saveButton_${task.id}`);
@@ -26,7 +28,7 @@ class TaskView {
         if (newText !== task.text) {
           saveButton.style.backgroundColor = "red";
         } else {
-          saveButton.style.backgroundColor = "";
+          saveButton.style.backgroundColor = "green";
         }
       });
 
