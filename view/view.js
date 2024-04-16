@@ -47,8 +47,15 @@ class TaskView {
             const deleteTaskEvent = new CustomEvent('deleteTask', { detail: taskId });
             document.dispatchEvent(deleteTaskEvent);
           });
+
+          const createdAtDate = new Date(task.createdAt);
+          const day = createdAtDate.getDate();
+          const month = createdAtDate.getMonth() + 1; // Month is zero-based, so we add 1
+          const year = createdAtDate.getFullYear();
+          const formattedDate = `${day}-${month}-${year}`;
+
       
-          li.textContent = `ID: ${task.id} - Date de création: ${task.createdAt} `;
+          li.textContent = `ID: ${task.id} - Date de création: ${formattedDate} `;
           li.appendChild(input);
           li.appendChild(saveButton);
           li.appendChild(deleteButton);
