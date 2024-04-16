@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>TODO List</title>
 </head>
 <body>
     <div class="container">
         <h1>TODO List</h1>
         <form id="taskForm">
-            <input type="text" id="taskInput" placeholder="Saisir une tâche">
-            <button type="submit">Ajouter</button>
+            <input type="text" id="taskInput" class="form-control" placeholder="Saisir une tâche">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
         <ul id="taskList"></ul>
     </div>

@@ -13,17 +13,20 @@ class TaskView {
     this.taskList.innerHTML = "";
     tasks.forEach((task) => {
       const li = document.createElement("li");
+      li.classList.add("list-group-item");
       const input = document.createElement("input");
+      input.classList.add("form-control");
       input.type = "text";
       input.value = task.text;
       input.id = `input_${task.id}`;
       const saveButton = document.createElement("button");
+      saveButton.classList.add("btn", "btn-primary");
       saveButton.id = `saveButton_${task.id}`;
       saveButton.style.backgroundColor = "green";
 
 
 
-      saveButton.textContent = "Sauvegarder changement";
+      saveButton.textContent = "Sauvegarder";
       saveButton.addEventListener("click", () => {
         const newText = input.value;
         const taskId = task.id;
@@ -40,14 +43,16 @@ class TaskView {
         const saveButton = document.getElementById(`saveButton_${task.id}`);
         const buttonId = `button_${task.id}`;
         if (newText !== task.text) {
-          saveButton.style.backgroundColor = "red";
+          saveButton.style.backgroundColor = "orange";
         } else {
           saveButton.style.backgroundColor = "green";     
         }
       });
 
       const deleteButton = document.createElement("button");
+      deleteButton.classList.add("btn", "btn-primary");
       deleteButton.textContent = "Supprimer";
+      deleteButton.style.backgroundColor = "red"; 
       deleteButton.addEventListener("click", () => {
         const taskId = task.id;
         const deleteTaskEvent = new CustomEvent("deleteTask", {
@@ -63,9 +68,9 @@ class TaskView {
       const hour = createdAtDate.getHours();
       const minute = createdAtDate.getMinutes();
       const second = createdAtDate.getSeconds();
-      const formattedDate = `le ${day}-${month}-${year} à ${hour}h${minute}:${second}`;
+      const formattedDate = ` Le ${day}-${month}-${year} à ${hour}h${minute} et ${second}  seconds `;
 
-      li.textContent = `ID: ${task.id} - Date de création: ${formattedDate} `;
+      li.innerHTML = `ID: ${task.id} <br> ${formattedDate} `;
       li.appendChild(input);
       li.appendChild(saveButton);
       li.appendChild(deleteButton);
