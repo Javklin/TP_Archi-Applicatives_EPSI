@@ -1,6 +1,11 @@
 class TaskModel {
+
   constructor() {
+    if (TaskModel.instance) {
+      return TaskModel.instance;
+    }
     this.tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    TaskModel.instance= this;
   }
 
   addTask(taskText) {
