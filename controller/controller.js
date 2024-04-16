@@ -27,8 +27,8 @@ class TaskController {
   }
 
   handleUpdateTask(event) {
-    const { taskId, newText } = event.detail;
-    this.model.updateTask(taskId, newText);
+    const { taskId, newText, taskCategory } = event.detail;
+    this.model.updateTask(taskId, newText, taskCategory);
   }
 }
 

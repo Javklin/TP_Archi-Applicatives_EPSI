@@ -31,11 +31,12 @@ class TaskModel {
     this.tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   }
 
-  updateTask(taskId, newText) {
+  updateTask(taskId, newText, newCategory) {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     const taskToUpdate = tasks.find((task) => task.id == taskId);
     if (taskToUpdate) {
       taskToUpdate.text = newText;
+      taskToUpdate.category= newCategory;
       localStorage.setItem("tasks", JSON.stringify(tasks));
       this.tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     }

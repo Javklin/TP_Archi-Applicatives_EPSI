@@ -28,16 +28,6 @@ class TaskView {
 
 
       saveButton.textContent = "Sauvegarder";
-      saveButton.addEventListener("click", () => {
-        const newText = input.value;
-        const taskId = task.id;
-        const updateTaskEvent = new CustomEvent("updateTask", {
-          detail: { taskId, newText },
-        });
-        task.text=newText
-        document.dispatchEvent(updateTaskEvent);
-        saveButton.style.backgroundColor = "green";    
-      });
 
       input.addEventListener("input", () => {
         const newText = input.value;
@@ -98,6 +88,18 @@ class TaskView {
         dropdown.appendChild(optionElement);
       });
       li.appendChild(dropdown)
+
+      saveButton.addEventListener("click", () => {
+        const newText = input.value;
+        const taskId = task.id;
+        const taskCategory = dropdown.value
+        const updateTaskEvent = new CustomEvent("updateTask", {
+          detail: { taskId, newText, taskCategory },
+        });
+        task.text=newText
+        document.dispatchEvent(updateTaskEvent);
+        saveButton.style.backgroundColor = "green";    
+      });
 
     });
   }
