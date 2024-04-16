@@ -11,6 +11,14 @@
         <h1>TP Archi Applicatives </h1>
         <form id="taskForm">
             <input type="text" id="taskInput" class="form-control" placeholder="Saisir une tâche">
+
+            <label for="prioritySelect">Priorité:</label>
+            <select class="form-control" id="prioritySelect">
+                <option value="low">Basse</option>
+                <option value="medium">Moyenne</option>
+                <option value="high">Haute</option>
+            </select>
+            
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
         <ul id="taskList"></ul>

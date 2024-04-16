@@ -8,11 +8,12 @@ class TaskModel {
     TaskModel.instance= this;
   }
 
-  addTask(taskText) {
+  addTask(taskText, taskCategory) {
     const task = {
       id: Date.now(),
       createdAt: new Date().toISOString(),
       text: taskText,
+      category: taskCategory,
     };
     this.tasks.push(task);
     localStorage.setItem("tasks", JSON.stringify(this.tasks));

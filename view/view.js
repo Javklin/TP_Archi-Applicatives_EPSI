@@ -3,6 +3,7 @@ class TaskView {
     this.taskList = document.getElementById("taskList");
     this.taskInput = document.getElementById("taskInput");
     this.taskForm = document.getElementById("taskForm");
+    this.taskCategory = document.getElementById("prioritySelect");
     this.taskForm.addEventListener(
       "submit",
       this.handleTaskFormSubmit.bind(this)
@@ -81,9 +82,10 @@ class TaskView {
   handleTaskFormSubmit(event) {
     event.preventDefault();
     const taskText = this.taskInput.value.trim();
-
-    if (taskText !== "") {
-      const addTaskEvent = new CustomEvent("addTask", { detail: taskText });
+    // TODO on ajoute un type différent de tâche en fonction de la catégorie choisie 
+    const taskCategory = this.taskCategory.value.trim();
+    if (taskText !== "" && taskCategory !== "" ) {
+      const addTaskEvent = new CustomEvent("addTask", {detail: { taskText, taskCategory } });
       document.dispatchEvent(addTaskEvent);
       this.taskInput.value = "";
     }

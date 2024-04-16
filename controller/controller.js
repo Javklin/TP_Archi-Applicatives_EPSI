@@ -12,8 +12,8 @@ class TaskController {
   }
 
   handleAddTask(event) {
-    const taskText = event.detail;
-    this.model.addTask(taskText);
+    const { taskText, taskCategory } = event.detail;
+    this.model.addTask(taskText, taskCategory);
   }
 
   handleTaskAdded(event) {
