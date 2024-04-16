@@ -1,10 +1,8 @@
 class TaskView {
     constructor() {
       this.taskList = document.getElementById('taskList');
-  
       this.taskInput = document.getElementById('taskInput');
       this.taskForm = document.getElementById('taskForm');
-  
       this.taskForm.addEventListener('submit', this.handleTaskFormSubmit.bind(this));
     }
   
@@ -12,24 +10,22 @@ class TaskView {
         this.taskList.innerHTML = '';
         tasks.forEach(task => {
           const li = document.createElement('li');
-      
           const input = document.createElement('input');
           input.type = 'text';
           input.value = task.text;
           input.id = `input_${task.id}`;
-      
           const saveButton = document.createElement('button');
           saveButton.id = `saveButton_${task.id}`;
-
-            input.addEventListener('input', () => {
+          input.addEventListener('input', () => {
             const newText = input.value;
             const saveButton = document.getElementById(`saveButton_${task.id}`);
             const buttonId = `button_${task.id}`;
             if (newText !== task.text) {
-              saveButton.style.backgroundColor = 'red';
-            } else {
-              saveButton.style.backgroundColor = ''; 
-            }
+                saveButton.style.backgroundColor = 'red';
+                } 
+            else {
+                saveButton.style.backgroundColor = ''; 
+                }
           });
 
           saveButton.textContent = 'Sauvegarder changement';
@@ -54,7 +50,6 @@ class TaskView {
           const year = createdAtDate.getFullYear();
           const formattedDate = `${day}-${month}-${year}`;
 
-      
           li.textContent = `ID: ${task.id} - Date de création: ${formattedDate} `;
           li.appendChild(input);
           li.appendChild(saveButton);
