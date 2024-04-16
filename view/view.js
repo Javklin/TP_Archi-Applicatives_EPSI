@@ -76,6 +76,29 @@ class TaskView {
       li.appendChild(saveButton);
       li.appendChild(deleteButton);
       this.taskList.appendChild(li);
+
+      
+      const dropdown = document.createElement('select');
+
+      const options = [
+        { value: 'low', label: 'Basse' },
+        { value: 'medium', label: 'Moyenne' },
+        { value: 'high', label: 'Haute' }
+      ];
+      
+
+      options.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option.value;
+        optionElement.textContent = option.label;
+
+        if (option.value === task.category) {
+          optionElement.selected = true; 
+        }
+        dropdown.appendChild(optionElement);
+      });
+      li.appendChild(dropdown)
+
     });
   }
 
