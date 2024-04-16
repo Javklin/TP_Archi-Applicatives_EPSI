@@ -10,6 +10,7 @@ class TaskView {
     );
   }
 
+  // sera redéfinit dans chaque class fille et on créera 3 instance des classes filles
   displayTasks(tasks) {
     this.taskList.innerHTML = "";
     tasks.forEach((task) => {
@@ -24,15 +25,11 @@ class TaskView {
       saveButton.classList.add("btn", "btn-primary");
       saveButton.id = `saveButton_${task.id}`;
       saveButton.style.backgroundColor = "green";
-
-
-
       saveButton.textContent = "Sauvegarder";
 
       input.addEventListener("input", () => {
         const newText = input.value;
         const saveButton = document.getElementById(`saveButton_${task.id}`);
-        const buttonId = `button_${task.id}`;
         if (newText !== task.text) {
           saveButton.style.backgroundColor = "orange";
         } else {
@@ -87,16 +84,28 @@ class TaskView {
         }
         dropdown.appendChild(optionElement);
       });
+      
+      dropdown.addEventListener("change", () => {
+        const newText = dropdown.value;
+        const saveButton = document.getElementById(`saveButton_${task.id}`);
+        if (newText != task.category) {
+          saveButton.style.backgroundColor = "orange";
+        } else {
+          saveButton.style.backgroundColor = "green";     
+        }
+      });
+
       li.appendChild(dropdown)
 
       saveButton.addEventListener("click", () => {
         const newText = input.value;
         const taskId = task.id;
-        const taskCategory = dropdown.value
+        const newCategory = dropdown.value;
         const updateTaskEvent = new CustomEvent("updateTask", {
-          detail: { taskId, newText, taskCategory },
+          detail: { taskId, newText, newCategory },
         });
         task.text=newText
+        task.category=newCategory 
         document.dispatchEvent(updateTaskEvent);
         saveButton.style.backgroundColor = "green";    
       });
