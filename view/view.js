@@ -21,16 +21,7 @@ class TaskView {
       saveButton.id = `saveButton_${task.id}`;
       saveButton.style.backgroundColor = "green";
 
-      input.addEventListener("input", () => {
-        const newText = input.value;
-        const saveButton = document.getElementById(`saveButton_${task.id}`);
-        const buttonId = `button_${task.id}`;
-        if (newText !== task.text) {
-          saveButton.style.backgroundColor = "red";
-        } else {
-          saveButton.style.backgroundColor = "green";
-        }
-      });
+
 
       saveButton.textContent = "Sauvegarder changement";
       saveButton.addEventListener("click", () => {
@@ -39,7 +30,20 @@ class TaskView {
         const updateTaskEvent = new CustomEvent("updateTask", {
           detail: { taskId, newText },
         });
+        task.text=newText
         document.dispatchEvent(updateTaskEvent);
+        saveButton.style.backgroundColor = "green";    
+      });
+
+      input.addEventListener("input", () => {
+        const newText = input.value;
+        const saveButton = document.getElementById(`saveButton_${task.id}`);
+        const buttonId = `button_${task.id}`;
+        if (newText !== task.text) {
+          saveButton.style.backgroundColor = "red";
+        } else {
+          saveButton.style.backgroundColor = "green";     
+        }
       });
 
       const deleteButton = document.createElement("button");
@@ -56,7 +60,10 @@ class TaskView {
       const day = createdAtDate.getDate();
       const month = createdAtDate.getMonth() + 1; // Month is zero-based, so we add 1
       const year = createdAtDate.getFullYear();
-      const formattedDate = `${day}-${month}-${year}`;
+      const hour = createdAtDate.getHours();
+      const minute = createdAtDate.getMinutes();
+      const second = createdAtDate.getSeconds();
+      const formattedDate = `le ${day}-${month}-${year} à ${hour}h${minute}:${second}`;
 
       li.textContent = `ID: ${task.id} - Date de création: ${formattedDate} `;
       li.appendChild(input);
