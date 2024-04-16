@@ -16,8 +16,22 @@ class TaskView {
           const input = document.createElement('input');
           input.type = 'text';
           input.value = task.text;
+          input.id = `input_${task.id}`;
       
           const saveButton = document.createElement('button');
+          saveButton.id = `saveButton_${task.id}`;
+
+            input.addEventListener('input', () => {
+            const newText = input.value;
+            const saveButton = document.getElementById(`saveButton_${task.id}`);
+            const buttonId = `button_${task.id}`;
+            if (newText !== task.text) {
+              saveButton.style.backgroundColor = 'red';
+            } else {
+              saveButton.style.backgroundColor = ''; 
+            }
+          });
+
           saveButton.textContent = 'Sauvegarder changement';
           saveButton.addEventListener('click', () => {
             const newText = input.value;
@@ -52,7 +66,9 @@ class TaskView {
         this.taskInput.value = '';
       }
     }
+
   }
-  
+
   const taskView = new TaskView();
+
   
