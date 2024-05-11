@@ -52,7 +52,7 @@ class MediumTaskView extends TaskView {
           const hour = createdAtDate.getHours();
           const minute = createdAtDate.getMinutes();
           const second = createdAtDate.getSeconds();
-          const formattedDate = ` Le ${day}-${month}-${year} à ${hour}h${minute} et ${second}  seconds `;
+          const formattedDate = ` Le ${day}/${month}/${year} à ${hour}h${minute} et ${second}  seconds `;
     
           li.innerHTML = `ID: ${task.id} <br> ${formattedDate} `;
           li.appendChild(input);
@@ -64,9 +64,9 @@ class MediumTaskView extends TaskView {
           const dropdown = document.createElement('select');
     
           const options = [
-            { value: 'low', label: 'Basse' },
-            { value: 'medium', label: 'Moyenne' },
-            { value: 'high', label: 'Haute' }
+            { value: 'low', label: 'travail' },
+            { value: 'medium', label: 'maison' },
+            { value: 'high', label: 'divers' }
           ];
           
     
