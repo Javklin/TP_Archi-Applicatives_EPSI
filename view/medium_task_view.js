@@ -5,8 +5,7 @@ class MediumTaskView extends TaskView {
     }
 
     //on redéfinit displayTask pour les taches à basse priorité    
-    displayTasks(tasks) {
-        
+    displayTasks(tasks) {        
         tasks.forEach((task) => {
           if (task.category=="medium")  {          
           const li = document.createElement("li");
