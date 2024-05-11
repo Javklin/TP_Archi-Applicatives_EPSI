@@ -1,16 +1,16 @@
-class LowTaskView extends TaskView {
+class HighTaskView extends TaskView {
 
     constructor() {        
         super();
     }
 
     //on redéfinit displayTask pour les taches à basse priorité    
-    displayTasks(tasks) {
+    displayTasks(tasks) {        
         tasks.forEach((task) => {
-          if (task.category=="low")  {
+          if (task.category=="high")  {          
           const li = document.createElement("li");
           li.classList.add("list-group-item");
-          li.style.backgroundColor= "gray";
+          li.style.backgroundColor= "lightpink";
           const input = document.createElement("input");
           input.classList.add("form-control");
           input.type = "text";
