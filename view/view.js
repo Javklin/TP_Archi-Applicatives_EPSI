@@ -116,7 +116,6 @@ class TaskView {
   handleTaskFormSubmit(event) {
     event.preventDefault();
     const taskText = this.taskInput.value.trim();
-    // TODO on ajoute un type différent de tâche en fonction de la catégorie choisie 
     const taskCategory = this.taskCategory.value.trim();
     if (taskText !== "" && taskCategory !== "" ) {
       const addTaskEvent = new CustomEvent("addTask", {detail: { taskText, taskCategory } });
