@@ -10,10 +10,20 @@
     <div class="container">
         <h1>TP Archi Applicatives </h1>
         <form id="taskForm">
+            <p>Filtrage des taches par
+                <label for="prioritySelect">Catégorie:</label>
+                <select class="form-control" id="filter">  
+                    <option value="all">Toutes Catégories</option>               
+                    <option value="high">Divers</option>
+                    <option value="medium">Maison</option>
+                    <option value="low">Travail</option>                
+                </select>
+
+            </p>
             <input type="text" id="taskInput" class="form-control" placeholder="Saisir une tâche">
 
-            <label for="prioritySelect">Priorité:</label>
-            <select class="form-control" id="prioritySelect">               
+            <label for="prioritySelect">Catégorie:</label>
+            <select class="form-control" id="prioritySelect">             
                 <option value="high">Divers</option>
                 <option value="medium">Maison</option>
                 <option value="low">Travail</option>                

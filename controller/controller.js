@@ -7,6 +7,7 @@ class TaskController {
     document.addEventListener("taskAdded", this.handleTaskAdded.bind(this));
     document.addEventListener("deleteTask", this.handleDeleteTask.bind(this));
     document.addEventListener("updateTask", this.handleUpdateTask.bind(this));
+    document.addEventListener("updateFilter", this.handleUpdateTask.bind(this));
 
     this.view.displayTasks(this.model.getTasks());
   }

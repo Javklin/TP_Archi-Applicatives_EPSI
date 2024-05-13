@@ -19,6 +19,7 @@ class TaskView {
     mediumTaskView.displayTasks(tasks);
     lowTaskView.displayTasks(tasks);
 
+
   }
 
   handleTaskFormSubmit(event) {
