@@ -32,7 +32,7 @@ class TaskController {
     this.model.updateTask(taskId, newText, newCategory);
   }
   
-  //TODO terminer
+
   handleFilter(event) {
     const category_filtered = event.detail;
     this.model.updateFilter(category_filtered);
