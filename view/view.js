@@ -10,7 +10,7 @@ class TaskView {
     );
   }
 
-  // sera redéfinit dans chaque class fille et on créera 3 instance des classes filles
+  // on utilise la méthode displayTasks des classes filles
   displayTasks(tasks) {
     const lowTaskView = new LowTaskView ();
     const mediumTaskView = new MediumTaskView ();
