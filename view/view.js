@@ -6,8 +6,15 @@ class TaskView {
     this.taskCategory = document.getElementById("prioritySelect");
     this.taskForm.addEventListener(
       "submit",
-      this.handleTaskFormSubmit.bind(this)
+      this.handleTaskFormSubmit.bind(this)      
     );
+
+    this.dropdown_filter =document.getElementById("filter");
+    this.dropdown_filter.addEventListener("change", () => {
+      const category_filter = this.dropdown_filter.value;
+      const filterTaskEvent = new CustomEvent("updateFilter", {detail: category_filter });
+      document.dispatchEvent(filterTaskEvent);
+    });
   }
 
   // on utilise la méthode displayTasks des classes filles
@@ -18,7 +25,6 @@ class TaskView {
     highTaskView.displayTasks(tasks);
     mediumTaskView.displayTasks(tasks);
     lowTaskView.displayTasks(tasks);
-
 
   }
 

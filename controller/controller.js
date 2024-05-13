@@ -7,7 +7,7 @@ class TaskController {
     document.addEventListener("taskAdded", this.handleTaskAdded.bind(this));
     document.addEventListener("deleteTask", this.handleDeleteTask.bind(this));
     document.addEventListener("updateTask", this.handleUpdateTask.bind(this));
-    document.addEventListener("updateFilter", this.handleUpdateTask.bind(this));
+    document.addEventListener("updateFilter", this.handleFilter.bind(this));
 
     this.view.displayTasks(this.model.getTasks());
   }
@@ -31,6 +31,14 @@ class TaskController {
     const { taskId, newText, newCategory } = event.detail;
     this.model.updateTask(taskId, newText, newCategory);
   }
+  
+  //TODO terminer
+  handleFilter(event) {
+    const category_filtered = event.detail;
+    this.model.updateFilter(category_filtered);
+    this.view.displayTasks(this.model.getTasks());
+  }
+
 }
 
 const model = new TaskModel();

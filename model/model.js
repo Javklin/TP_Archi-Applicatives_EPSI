@@ -42,6 +42,31 @@ class TaskModel {
     }
   }
 
+
+
+  updateFilter(category_filtered) {
+  //on affiche toutes les catégories
+  if(category_filtered=="all")  {
+    this.tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  }
+  //on affiche les catégories travail
+  if(category_filtered=="low")  {
+    this.tasks = (JSON.parse(localStorage.getItem("tasks")) || []).filter(task => task.category == "low");
+  }
+  //on affiche les catégories maison
+  if(category_filtered=="medium")  {
+    this.tasks = (JSON.parse(localStorage.getItem("tasks")) || []).filter(task => task.category == "medium");
+  }
+
+  //on affiche les catégories divers
+  if(category_filtered=="high")  {
+    this.tasks = (JSON.parse(localStorage.getItem("tasks")) || []).filter(task => task.category == "high");
+  }
+
+
+  }
+
   getTasks() {
     return this.tasks;
   }
